@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                overflow: hidden;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            .main {
+                width: 100vh;
+                height: 70vh;
+                background-color: #E8E8E8;
+                background: linear-gradient(
+                    to top,
+                    #E8E8E8 0%,
+                    #D6D8DA 100%
+                );
+                margin: 0 auto;
+                margin-top: 8vh;
+                border-radius: 1vh;
+
+                visibility: hidden;
+            }
+            .HeaderLogoMazeBank {
+                height: 8vh;
+                margin-left: 2vh;
+                margin-top: 2vh;
+            }
+            .redline_a {
+                height: 1.2vh;
+                width: 90%;
+                margin: 0 auto;
+                margin-top: 1vh;
+            }
+            .cash_have {
+                float: right;
+                color: #7BCA82;
+                display: block;
+                font-size: 3vh;
+                font-weight: 800;
+                text-shadow: -0.15vh 0 black, 0 0.15vh black, 0.15vh 0 black, 0 -0.15vh black;
+                margin-top: 1.5vh;
+                margin-right: 5vh;
+                max-width: 57vh;
+                text-align: right;
+                word-wrap: break-word;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                z-index: 100;
+            }
+            .fullwidth_a {
+                display: flex;
+            }
+            .WelcomeText {
+                font-size: 3.5vh;
+                font-weight: 700;
+                height: 6vh;
+                text-align: center;
+                margin-top: 10vh;
+                visibility: hidden;
+            }
+            .Button {
+                height: 6vh;
+                width: 20vh;
+                border-radius: 1vh;
+                border: black solid 0.1vh;
+                box-shadow: 0 0 0.5vh #5e0d14;
+                text-align: center;
+                font-size: 3vh;
+                font-weight: 600;
+                line-height: 6.3vh;
+                color: white;
+                text-shadow: -0.15vh 0 black, 0 0.15vh black, 0.15vh 0 black, 0 -0.15vh black;
+                cursor: url(fuck_finger_cursor.png), pointer;
+            }
+            .Button:hover  {
+                background-color: rgba(19, 172, 233, 0.925);
+            }
+            .MainMenu_Button {
+                position: relative;
+                left: 39vh;
+                top: 5vh;
+                visibility: hidden;
+            }
+            .ServerName {
+                display: block;
+                text-align: left;
+                position: relative;
+                left: 12vh;
+                top: -28.5vh;
+                font-size: 3.3vh;
+                font-weight: 700;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                word-wrap: break-word;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                max-width: 57vh;
+            }
+            .Language_Button {
+                position: relative;
+                left: 3vh;
+                top: 20vh;
+            }
+            .Background_Base__Def_Red {
+                background-color: #e10909;
+            }
+            .Background_Base2__Def_Red {
+                background: linear-gradient(
+                    to top,
+                    #f32020 0%,
+                    #d30505 100%
+                );
+            }
+            .HouseLogo {
+                position: relative;
+                left: 90vh;
+                top: 13vh;
+                height: 7vh;
+                width: 7vh;
+                cursor: url(fuck_finger_cursor.png), pointer;
+                border: none !important;
+                box-shadow: 0 0 0 !important;
+            }
+            .bank_have {
+                position: relative;
+                left: 38vh;
+                top: -50.5vh;
+                text-align: right;
+                height: 7vh;
+                color: #7BCA82;
+                display: block;
+                font-size: 3vh;
+                font-weight: 800;
+                text-shadow: -0.15vh 0 black, 0 0.15vh black, 0.15vh 0 black, 0 -0.15vh black;
+                margin-top: 1.5vh;
+                margin-right: 5vh;
+                max-width: 57vh;
+                text-align: right;
+                word-wrap: break-word;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                z-index: 100;
+            }
+            .Choose_Service {
+                position: relative;
+
+                left: 5vh;
+                top: -48vh;
+
+                height: 10vh;
+                width: 90vh;
+
+                visibility: hidden;
+            }
+            .UserName_ON_ChooseService {
+                position: relative;
+                left: 1vh;
+                top: 0vh;
+                text-align: left;
+                color: #ffffff;
+                display: block;
+                font-size: 3vh;
+                font-weight: 700;
+                text-shadow: -0.15vh 0 black, 0 0.15vh black, 0.15vh 0 black, 0 -0.15vh black;
+                max-width: 57vh;
+                word-wrap: break-word;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .Choose_a_Service {
+                position: relative;
+                left: 17vh;
+                top: -0.5vh;
+                text-align: center;
+                color: #ffffff;
+                display: block;
+                font-size: 3vh;
+                font-weight: 700;
+                text-shadow: -0.15vh 0 black, 0 0.15vh black, 0.15vh 0 black, 0 -0.15vh black;
+                max-width: 57vh;
+                word-wrap: break-word;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .Deposit_Button {
+                position: relative;
+                left: 28vh;
+                top: -44vh;
+
+                visibility: hidden;
+            }
+            .Withdraw_Button {
+                position: relative;
+                left: 52vh;
+                top: -50.32vh;
+
+                visibility: hidden;
+            }
+            .Log_Button {
+                position: relative;
+                left: 28vh;
+                top: -45vh;
+
+                visibility: hidden;
+            }
+            .Transfer_Button {
+                position: relative;
+                left: 52vh;
+                top: -51.32vh;
+
+                visibility: hidden;
+            }
+            .Exit_Button {
+                position: relative;
+                left: 38.8vh;
+                top: -38vh;
+            }
+            ._1D_Button {
+                position: relative;
+                left: 5vh;
+                top: -89vh;
+
+                visibility: hidden;
+            }
+            ._10D_Button {
+                position: relative;
+                left: 28vh;
+                top: -95.3vh;
+
+                visibility: hidden;
+            }
+            ._100D_Button {
+                position: relative;
+                left: 51vh;
+                top: -101.6vh;
+
+                visibility: hidden;
+            }
+            ._1-000D_Button {
+                position: relative;
+                left: 74vh;
+                top: -107.9vh;
+
+                visibility: hidden;
+            }
+            ._10-000D_Button {
+                position: relative;
+                left: 5vh;
+                top: -105vh;
+
+                visibility: hidden;
+            }
+            ._100-000D_Button {
+                position: relative;
+                left: 28vh;
+                top: -111.3vh;
+
+                visibility: hidden;
+            }
+            ._1-000-000D_Button {
+                position: relative;
+                left: 51vh;
+                top: -117.6vh;
+
+                visibility: hidden;
+            }
+            .CashMore_D_Button {
+                position: relative;
+                left: 74vh;
+                top: -123.9vh;
+
+                visibility: hidden;
+            }
+            .Loading_Gif {
+                height: 30vh;
+                position: relative;
+                left: 33.5vh;
+                top: -135vh;
+
+                visibility: hidden;
+            }
+            .History_Place {
+                position: relative;
+                left: 7vh;
+                top: -167vh;
+                padding: 1vh;
+                width: 84vh;
+                height: 33vh;
+                overflow-y: scroll;
+                background-color: #cfcfcf;
+                font-size: 2.3vh;
+                font-weight: 600;
+                border: black solid 0.1vh;
+
+                visibility: hidden;
+            }
+            .Transfer_Target_ID_Label {
+                position: relative;
+                left: 7vh;
+                top: -195vh;
+                font-size: 3vh;
+                font-weight: 600;
+                text-align: left;
+
+                visibility: hidden;
+            }
+            .Transfer_Target_ID {
+                position: relative;
+                left: 7vh;
+                top: -195vh;
+                padding: 1vh;
+                width: 30vh;
+                height: 3vh;
+                background-color: #cfcfcf;
+                font-size: 3vh;
+                font-weight: 600;
+                border: black solid 0.1vh;
+                border-radius: 1vh;
+
+                visibility: hidden;
+            }
+            .Transfer_Target_Money_Label {
+                position: relative;
+                left: -40vh;
+                top: -186vh;
+                font-size: 3vh;
+                font-weight: 600;
+                text-align: left;
+
+                visibility: hidden;
+            }
+            .Transfer_Target_Money {
+                position: relative;
+                left: -40vh;
+                top: -186vh;
+                padding: 1vh;
+                width: 32vh;
+                height: 3vh;
+                background-color: #cfcfcf;
+                font-size: 3vh;
+                font-weight: 600;
+                border: black solid 0.1vh;
+                border-radius: 1vh;
+
+                visibility: hidden;
+            }
+            .Transfer_Send_Button {
+                position: relative;
+                left: 60vh;
+                top: -191.5vh;
+
+                visibility: hidden;
+            }
+            .TypeCash_Label {
+                position: relative;
+                left: 10vh;
+                top: -199.5vh;
+                font-size: 3vh;
+                font-weight: 600;
+                text-align: left;
+
+                visibility: hidden;
+            }
+            .TypeCash {
+                position: relative;
+                left: 10vh;
+                top: -199.5vh;
+                padding: 1vh;
+                width: 32vh;
+                height: 3vh;
+                background-color: #cfcfcf;
+                font-size: 3vh;
+                font-weight: 600;
+                border: black solid 0.1vh;
+                border-radius: 1vh;
+
+                visibility: hidden;
+            }
+            .TypeCash_Button {
+                position: relative;
+                left: 60vh;
+                top: -205vh;
+
+                visibility: hidden;
+            }
+            .ERROR_Label {
+                position: relative;
+                left: 45vh;
+                top: -210vh;
+                font-size: 3vh;
+                font-weight: 600;
+                text-align: left;
+
+                visibility: hidden;
+            }
+            .ERROR_OK_Button {
+                position: relative;
+                left: 60vh;
+                top: -215.5vh;
+
+                visibility: hidden;
+            }
+            .Ask_AREYOUSURE_Label {
+                position: relative;
+                left: 25vh;
+                top: -230vh;
+                font-size: 3vh;
+                font-weight: 600;
+                text-align: left;
+
+                visibility: hidden;
+            }
+            .Ask_AREYOUSURE_YES_Button {
+                position: relative;
+                left: 35vh;
+                top: -225vh;
+
+                visibility: hidden;
+            }
+            .Ask_AREYOUSURE_NO_Button {
+                position: relative;
+                left: 35vh;
+                top: -225vh;
+
+                visibility: hidden;
+            }
+        </style>
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+        <script type="text/javascript" async>
+            console.log("Hu_ATM Start");
+            var Language = "EN";
+            var thename = 'Hu_ATM';
+            const root = thename;
+            var Languages_Texts = {
+                "EN":{
+                    "MainMenu_Button":"Main Menu",
+                    "Language_Button":"English",
+                    "WelcomeText":"Welcome To Maze Bank",
+                    "Choose_a_Service":"Choose a Service",
+                    "Deposit_Button":"Deposit",
+                    "Withdraw_Button":"Withdraw",
+                    "Log_Button":"Log",
+                    "Transfer_Button":"Transfer",
+                    "Exit_Button":"Exit",
+                    "CashMore_D_Button":"More..",
+                    "Transfer_Target_ID_Label":"Target ID:",
+                    "Transfer_Target_Money_Label":"Money:",
+                    "Transfer_Send_Button":"Send",
+                    "Ask_AREYOUSURE_Label":"Are You Sure You Want | $?",
+                    "PUT":"PUT",
+                    "GET":"GET",
+                    "SEND_Player":"Send",
+                    "Ask_AREYOUSURE_YES_Button":"YES",
+                    "Ask_AREYOUSURE_NO_Button":"NO",
+                    "ERROR_Label":"ERROR",
+                    "ERROR_OK_Button":"OK",
+                    "TypeCash_Label":"Money:",
+                    "TypeCash_Button":"Done",
+                    "Ask_AREYOUSURE_Label__2":"Are You Sure You Want | $ To ID:- ?",
+                    "MainMenu_Buttons":"",
+                },
+                "FA":{
+                    "MainMenu_Button":"منوی اصلی",
+                    "Language_Button":"فارسی",
+                    "WelcomeText":"خوش آمدید به میز بانک",
+                    "Choose_a_Service":"یک سرویس را انتخاب کنید",
+                    "Deposit_Button":"سپرده",
+                    "Withdraw_Button":"برداشت",
+                    "Log_Button":"تاریخچه",
+                    "Transfer_Button":"انتقال",
+                    "Exit_Button":"خروج",
+                    "CashMore_D_Button":"بیشتر..",
+                    "Transfer_Target_ID_Label":"آیدی:",
+                    "Transfer_Target_Money_Label":"پول:",
+                    "Transfer_Send_Button":"ارسال",
+                    "Ask_AREYOUSURE_Label":"آیا مطمعنید برای | $?",
+                    "PUT":"گذاشتن",
+                    "GET":"گرفتن",
+                    "SEND_Player":"ارسال",
+                    "Ask_AREYOUSURE_YES_Button":"آره",
+                    "Ask_AREYOUSURE_NO_Button":"نه",
+                    "ERROR_Label":"ارور",
+                    "ERROR_OK_Button":"اوکی",
+                    "TypeCash_Label":"پول:",
+                    "TypeCash_Button":"انجام",
+                    "Ask_AREYOUSURE_Label__2":"آیا مطمعنید برای | $ به آیدی:- ?",
+                    "MainMenu_Buttons":"",
+                },
+            }
+            var Model_BANK_A = "Deposit";
+            var DATA_A = {};
+            ChangeWelcomeMenu = function(Model_A){
+                $('.WelcomeText').css("visibility", Model_A);
+                $('.MainMenu_Button').css("visibility", Model_A);
+            }
+            ChangeChoose_ServiceMenu = function(Model_A){
+                $('.Choose_Service').css("visibility", Model_A);
+                $('.Deposit_Button').css("visibility", Model_A);
+                $('.Withdraw_Button').css("visibility", Model_A);
+                $('.Log_Button').css("visibility", Model_A);
+                $('.Transfer_Button').css("visibility", Model_A);
+            }
+            ChangeMoneyMenu = function(Model_A){
+                $('._1D_Button').css("visibility", Model_A);
+                $('._10D_Button').css("visibility", Model_A);
+                $('._100D_Button').css("visibility", Model_A);
+                $('._1-000D_Button').css("visibility", Model_A);
+                $('._10-000D_Button').css("visibility", Model_A);
+                $('._100-000D_Button').css("visibility", Model_A);
+                $('._1-000-000D_Button').css("visibility", Model_A);
+                $('.CashMore_D_Button').css("visibility", Model_A);
+            }
+            ChangeHistory_PlaceMenu = function(Model_A){
+                $('.History_Place').css("visibility", Model_A);
+            }
+            ChangeTransfer_Menu = function(Model_A){
+                $('.Transfer_Target_ID_Label').css("visibility", Model_A);
+                $('.Transfer_Target_ID').css("visibility", Model_A);
+                $('.Transfer_Target_Money_Label').css("visibility", Model_A);
+                $('.Transfer_Target_Money').css("visibility", Model_A);
+                $('.Transfer_Send_Button').css("visibility", Model_A);
+            }
+            ChangeAsk_AREYOUSURE_Menu = function(Model_A){
+                $('.Ask_AREYOUSURE_Label').css("visibility", Model_A);
+                $('.Ask_AREYOUSURE_YES_Button').css("visibility", Model_A);
+                $('.Ask_AREYOUSURE_NO_Button').css("visibility", Model_A);
+            }
+            ChangeEnter_Value_Menu = function(Model_A){
+                $('.TypeCash_Label').css("visibility", Model_A);
+                $('.TypeCash').css("visibility", Model_A);
+                $('.TypeCash_Button').css("visibility", Model_A);
+            }
+            ChangeERROR_Menu = function(Model_A){
+                $('.ERROR_Label').css("visibility", Model_A);
+                $('.ERROR_OK_Button').css("visibility", Model_A);
+            }
+            OpenMainMenu = function(){
+
+                $('.TypeCash').val('');
+                $('.Transfer_Target_ID').val('');
+                $('.Transfer_Target_Money').val('');
+                $('.History_Place').html("");
+
+                $('.main').css("visibility", "visible");
+
+                ChangeWelcomeMenu("visible");
+
+                ChangeChoose_ServiceMenu("hidden");
+
+                ChangeMoneyMenu("hidden");
+
+                ChangeHistory_PlaceMenu("hidden");
+
+                ChangeTransfer_Menu("hidden");
+
+                ChangeAsk_AREYOUSURE_Menu('hidden');
+
+                ChangeEnter_Value_Menu("hidden");
+                
+                ChangeERROR_Menu("hidden");
+
+                $('.Loading_Gif').css("visibility", 'hidden');
+
+                $('.main').css("cursor", "default");
+            };
+            CloseATM = function(){
+                fetch(`https://${GetParentResourceName()}/datas`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json; charset=UTF-8',
+                        },
+                        body: JSON.stringify({
+                            CloseATM: true,
+                        })
+                }).then(resp => resp.json()).then(resp => console.log(resp));
+                OpenMainMenu();
+                ChangeWelcomeMenu("hidden");
+                $('.main').css("visibility", "hidden");
+            };
+            ClearATM = function(){
+                OpenMainMenu();
+                ChangeWelcomeMenu("hidden");
+            };
+            OpenDepositMenu = function(){
+                Model_BANK_A = 'Deposit';
+
+                ChangeMoneyMenu("visible");
+
+                ChangeChoose_ServiceMenu("hidden");
+
+                $('.main').css("cursor", "default");
+            };
+            OpenWithdrawMenu = function(){
+                Model_BANK_A = 'Withdraw';
+
+                ChangeMoneyMenu("visible");
+
+                ChangeChoose_ServiceMenu("hidden");
+
+                $('.main').css("cursor", "default");
+            };
+            OpenHistory_PlaceMenu = function(){
+
+                $('.Loading_Gif').css("visibility", 'visible');
+
+                ChangeChoose_ServiceMenu("hidden");
+
+                $('.main').css("cursor", "default");
+
+                setTimeout(() => {
+                    fetch(`https://${GetParentResourceName()}/datas`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json; charset=UTF-8',
+                        },
+                        body: JSON.stringify({
+                            Open_LOG: true,
+                        })
+                    }).then(resp => resp.json()).then(resp => console.log(resp));
+                }, 500);
+
+            };
+            OpenTransferMenu = function(){
+
+                $('.Transfer_Target_ID').val('');
+                $('.Transfer_Target_Money').val('');
+
+                ChangeTransfer_Menu("visible");
+
+                $('.Transfer_Target_ID').select();
+
+                ChangeChoose_ServiceMenu("hidden");
+
+                $('.main').css("cursor", "default");
+            };
+            ClickButton_a = function(a){
+                for (const[key,value] of Object.entries(a.target.classList)) {
+                    if (value == "MainMenu_Button"){
+                        ChangeWelcomeMenu("hidden");
+
+                        ChangeChoose_ServiceMenu("visible");
+
+                        $('.main').css("cursor", "default");
+
+                    } else if (value == "Language_Button"){
+                        if (Language == "EN"){
+                            Language = "FA"
+                            $('.Language_Button').html(Languages_Texts['EN']['Language_Button']);
+                            $('.MainMenu_Button').html(Languages_Texts['FA']['MainMenu_Button']);
+                            $('.Choose_a_Service').html(Languages_Texts['FA']['Choose_a_Service']);
+                            $('.Deposit_Button').html(Languages_Texts['FA']['Deposit_Button']);
+                            $('.Withdraw_Button').html(Languages_Texts['FA']['Withdraw_Button']);
+                            $('.Log_Button').html(Languages_Texts['FA']['Log_Button']);
+                            $('.Transfer_Button').html(Languages_Texts['FA']['Transfer_Button']);
+                            $('.Exit_Button').html(Languages_Texts['FA']['Exit_Button']);
+                            $('.CashMore_D_Button').html(Languages_Texts['FA']['CashMore_D_Button']);
+                            $('.Transfer_Target_ID_Label').html(Languages_Texts['FA']['Transfer_Target_ID_Label']);
+                            $('.Transfer_Send_Button').html(Languages_Texts['FA']['Transfer_Send_Button']);
+                            $('.Ask_AREYOUSURE_YES_Button').html(Languages_Texts['FA']['Ask_AREYOUSURE_YES_Button']);
+                            $('.Ask_AREYOUSURE_NO_Button').html(Languages_Texts['FA']['Ask_AREYOUSURE_NO_Button']);
+                            $('.ERROR_Label').html(Languages_Texts['FA']['ERROR_Label']);
+                            $('.ERROR_OK_Button').html(Languages_Texts['FA']['ERROR_OK_Button']);
+                            $('.TypeCash_Label').html(Languages_Texts['FA']['TypeCash_Label']);
+                            $('.TypeCash_Button').html(Languages_Texts['FA']['TypeCash_Button']);
+
+                            $('.WelcomeText').html(Languages_Texts['FA']['WelcomeText']);
+
+                        }else if (Language == "FA"){
+                            Language = "EN"
+                            $('.Language_Button').html(Languages_Texts['FA']['Language_Button']);
+                            $('.MainMenu_Button').html(Languages_Texts['EN']['MainMenu_Button']);
+                            $('.Choose_a_Service').html(Languages_Texts['EN']['Choose_a_Service']);
+                            $('.Deposit_Button').html(Languages_Texts['EN']['Deposit_Button']);
+                            $('.Withdraw_Button').html(Languages_Texts['EN']['Withdraw_Button']);
+                            $('.Log_Button').html(Languages_Texts['EN']['Log_Button']);
+                            $('.Transfer_Button').html(Languages_Texts['EN']['Transfer_Button']);
+                            $('.Exit_Button').html(Languages_Texts['EN']['Exit_Button']);
+                            $('.CashMore_D_Button').html(Languages_Texts['EN']['CashMore_D_Button']);
+                            $('.Transfer_Target_ID_Label').html(Languages_Texts['EN']['Transfer_Target_ID_Label']);
+                            $('.Transfer_Send_Button').html(Languages_Texts['EN']['Transfer_Send_Button']);
+                            $('.Ask_AREYOUSURE_YES_Button').html(Languages_Texts['EN']['Ask_AREYOUSURE_YES_Button']);
+                            $('.Ask_AREYOUSURE_NO_Button').html(Languages_Texts['EN']['Ask_AREYOUSURE_NO_Button']);
+                            $('.ERROR_Label').html(Languages_Texts['EN']['ERROR_Label']);
+                            $('.ERROR_OK_Button').html(Languages_Texts['EN']['ERROR_OK_Button']);
+                            $('.TypeCash_Label').html(Languages_Texts['EN']['TypeCash_Label']);
+                            $('.TypeCash_Button').html(Languages_Texts['EN']['TypeCash_Button']);
+
+                            $('.WelcomeText').html(Languages_Texts['EN']['WelcomeText']);
+
+                        }
+                    } else if (value == "HouseLogo"){
+                        OpenMainMenu();
+                    } else if (value == "Deposit_Button"){
+                        OpenDepositMenu();
+                    } else if (value == "Withdraw_Button"){
+                        OpenWithdrawMenu();
+                    } else if (value == "Log_Button"){
+                        OpenHistory_PlaceMenu();
+                    } else if (value == "Transfer_Button"){
+                        OpenTransferMenu();
+                    } else if (value == "Exit_Button"){
+                        ToggleOff();
+                    } else if (value == "Cash_Select"){
+                        var D_A = a.target.innerHTML;
+                        for (let step = 0; step < 6; step++){
+                            D_A = D_A.replace('$', '');
+                            D_A = D_A.replace(',', '');
+                            D_A = D_A.replace(' ', '');
+                        }
+                        var Type_D_A = Model_BANK_A;
+                        if (Type_D_A == 'Deposit' ){
+                            Type_D_A = 'PUT'
+                        } else {
+                            Type_D_A = 'GET'
+                        }
+                        fetch(`https://${GetParentResourceName()}/datas`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json; charset=UTF-8',
+                            },
+                            body: JSON.stringify({
+                                Cash_Select: true,
+                                type: Type_D_A,
+                                money: D_A,
+                            })
+                        }).then(resp => resp.json()).then(resp => console.log(resp));
+                    } else if (value == "Ask_AREYOUSURE_YES_Button"){
+                        if (DATA_A != null && DATA_A.money != null && DATA_A.model != null){
+                            fetch(`https://${GetParentResourceName()}/datas`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json; charset=UTF-8',
+                                },
+                                body: JSON.stringify({
+                                    Cash_YES: true,
+                                    type: DATA_A.model,
+                                    money: DATA_A.money,
+                                    playerid: DATA_A.playerid,
+                                })
+                            }).then(resp => resp.json()).then(resp => console.log(resp));
+                        }
+                        DATA_A = {};
+                        OpenMainMenu();
+
+                    } else if (value == "Ask_AREYOUSURE_NO_Button"){
+                        OpenMainMenu();
+                    } else if (value == "CashMore_D_Button"){
+                        ClearATM();
+                        $('.TypeCash').val('');
+                        ChangeEnter_Value_Menu("visible");
+                        $('.TypeCash').select();
+                    } else if (value == "TypeCash_Button"){
+                        var D_A = document.getElementById("TypeCash").value;
+                        var Type_D_A = Model_BANK_A;
+                        if (Type_D_A == 'Deposit' ){
+                            Type_D_A = 'PUT'
+                        } else {
+                            Type_D_A = 'GET'
+                        }
+                        fetch(`https://${GetParentResourceName()}/datas`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json; charset=UTF-8',
+                            },
+                            body: JSON.stringify({
+                                Cash_Select: true,
+                                type: Type_D_A,
+                                money: D_A,
+                            })
+                        }).then(resp => resp.json()).then(resp => console.log(resp));
+                    } else if (value == "ERROR_OK_Button"){
+                        OpenMainMenu();
+                    } else if (value == "Transfer_Send_Button"){
+                        var ID_A = document.getElementById("Transfer_Target_ID").value;
+                        var D_A = document.getElementById("Transfer_Target_Money").value;
+                        var Type_D_A = "SEND_Player";
+                        fetch(`https://${GetParentResourceName()}/datas`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json; charset=UTF-8',
+                            },
+                            body: JSON.stringify({
+                                Cash_Select: true,
+                                type: Type_D_A,
+                                money: D_A,
+                                playerid: ID_A,
+                            })
+                        }).then(resp => resp.json()).then(resp => console.log(resp));
+                    }
+                }
+            };
+            ClickServerName_a = function(){
+
+            };
+            $(function () {
+
+                ToggleOn = function(){
+                    OpenMainMenu();
+                };
+                ToggleOff = function(){
+                    CloseATM();
+                    fetch(`https://${GetParentResourceName()}/datas`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json; charset=UTF-8',
+                        },
+                        body: JSON.stringify({
+                            SetNuiFocus: false
+                        })
+                    }).then(resp => resp.json()).then(resp => console.log(resp));
+                };
+
+                window.addEventListener('message', function (event) {
+                    switch (event.data.type) {
+                        case 'OpenATM':
+                            ToggleOn();
+                            break;
+                        case 'CloseATM':
+                            ToggleOff();
+                            break;
+                        case 'SetCash':
+                            $('.cash_have').html(event.data.money);
+                            break;
+                        case 'SetBank':
+                            $('.bank_have').html(event.data.money);
+                            break;
+                        case 'ASK':
+                            OpenMainMenu();
+                            ChangeWelcomeMenu("hidden");
+                            ChangeAsk_AREYOUSURE_Menu('visible')
+                            var model = event.data.model;
+                            var money = event.data.money;
+                            DATA_A.model = model;
+                            DATA_A.money = money;
+                            var x = Languages_Texts[Language]['Ask_AREYOUSURE_Label'];
+                            x = x.replace('|', Languages_Texts[Language][model]);
+                            x = x.replace('$', String(money)+"$");
+                            $('.Ask_AREYOUSURE_Label').html(x);
+                            break;
+                        case 'ASK_TO_SEND':
+                            OpenMainMenu();
+                            ChangeWelcomeMenu("hidden");
+                            ChangeAsk_AREYOUSURE_Menu('visible')
+                            var model = event.data.model;
+                            var money = event.data.money;
+                            var playerid = event.data.playerid;
+                            DATA_A.model = model;
+                            DATA_A.money = money;
+                            DATA_A.playerid = playerid;
+                            var x = Languages_Texts[Language]['Ask_AREYOUSURE_Label__2'];
+                            x = x.replace('|', Languages_Texts[Language][model]);
+                            x = x.replace('$', String(money)+"$");
+                            x = x.replace('-', String(playerid));
+                            $('.Ask_AREYOUSURE_Label').html(x);
+                            break;
+                        case 'ERROR':
+                            ClearATM();
+                            ChangeERROR_Menu("visible");
+                            break;
+                        case 'Open_Log':
+                            $('.History_Place').html(event.data.text);
+                            $('.Loading_Gif').css("visibility", 'hidden');
+                            ChangeHistory_PlaceMenu("visible");
+                            break;
+                        case 'IC_Name':
+                            $('.UserName_ON_ChooseService').html(event.data.name);
+                            break;
+                        default:
+                        break;
+                    }
+                }, false);
+
+                $(document).keyup(function(e){
+                    if (e.keyCode == 27){
+                        ToggleOff();
+                    }
+                })
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="Header">
+                <img class="HeaderLogoMazeBank" src="mazebank_logo_header.png">
+                <div class="cash_have">Cash: 0$</div>
+                <div class="redline_a Background_Base2__Def_Red"></div>
+                <div class="fullwidth_a"></div>
+                <div class="WelcomeText">Welcome To Maze Bank</div>
+                <div class="MainMenu_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">Main Menu</div>
+                <div class="ServerName" onclick="ClickServerName_a(event);">Radio Active V3</div>
+                <div class="Language_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">فارسی</div>
+                <img class="HouseLogo Button" onclick="ClickButton_a(event);" src="house_logo.png">
+                <div class="bank_have">Bank: 0$</div>
+                <div class="Choose_Service Background_Base2__Def_Red">
+                    <div class="UserName_ON_ChooseService">USER</div>
+                    <div class="Choose_a_Service">Choose a Service</div>
+
+                </div>
+
+                <div class="Deposit_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">Deposit</div>
+                <div class="Withdraw_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">Withdraw</div>
+                <div class="Log_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">Log</div>
+                <div class="Transfer_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">Transfer</div>
+
+                <div class="Exit_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">Exit</div>
+
+                <div class="_1D_Button Background_Base__Def_Red Button Cash_Select" onclick="ClickButton_a(event);">1$</div>
+                <div class="_10D_Button Background_Base__Def_Red Button Cash_Select" onclick="ClickButton_a(event);">10$</div>
+                <div class="_100D_Button Background_Base__Def_Red Button Cash_Select" onclick="ClickButton_a(event);">100$</div>
+                <div class="_1-000D_Button Background_Base__Def_Red Button Cash_Select" onclick="ClickButton_a(event);">1,000$</div>
+                <div class="_10-000D_Button Background_Base__Def_Red Button Cash_Select" onclick="ClickButton_a(event);">10,000$</div>
+                <div class="_100-000D_Button Background_Base__Def_Red Button Cash_Select" onclick="ClickButton_a(event);">100,000$</div>
+                <div class="_1-000-000D_Button Background_Base__Def_Red Button Cash_Select" onclick="ClickButton_a(event);">1,000,000$</div>
+                <div class="CashMore_D_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">More..</div>
+
+                <img class="Loading_Gif" src="loading.gif">
+
+                <div class="History_Place">
+                </div>
+
+                <label class="Transfer_Target_ID_Label">Target ID:</label>
+                <input class="Transfer_Target_ID" id="Transfer_Target_ID" type="number">
+                <label class="Transfer_Target_Money_Label">Money:</label>
+                <input class="Transfer_Target_Money" id="Transfer_Target_Money" type="number">
+                <div class="Transfer_Send_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">
+                    SEND
+                </div>
+
+                <label class="TypeCash_Label">Money:</label>
+                <input class="TypeCash" id="TypeCash" type="number">
+                <div class="TypeCash_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">
+                    Done
+                </div>
+
+                <label class="ERROR_Label">ERROR</label>
+                <div class="ERROR_OK_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">
+                    OK
+                </div>
+
+                <label class="Ask_AREYOUSURE_Label">Are You Sure You Want | $?</label>
+                <div class="Ask_AREYOUSURE_NO_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">
+                    NO
+                </div>
+                <div class="Ask_AREYOUSURE_YES_Button Background_Base__Def_Red Button" onclick="ClickButton_a(event);">
+                    YES
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
