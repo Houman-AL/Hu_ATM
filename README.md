@@ -1,5 +1,5 @@
 # Hu_ATM
-ATM | My Discord: Houman#7172
+Maze Bank ATM | My Discord: Houman#7172
 
 Youtube: https://youtu.be/172B-n66o3Q
 
